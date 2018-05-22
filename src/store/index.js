@@ -57,6 +57,10 @@ export default new vuex.Store({
         .then(res => {
           commit('setMovies', res.data.results)
         }).catch(err => dispatch('showNotification', err))
+    },
+    removeMovie({dispatch, commit, state}, movie){
+      var index = state.watchlist.findIndex(m=> m.id==movie.id)
+        commit('removeMovie', index)
     }
   }
 })
